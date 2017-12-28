@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		30F93B360536600F24063E14 /* Pods_THAddressBookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE8440627760D275A15C6C3 /* Pods_THAddressBookUITests.framework */; };
 		7D0F9D59211D1519F6F30435 /* Pods_THAddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3AB38C678A7E3F325C7AE8 /* Pods_THAddressBook.framework */; };
+		C21A07721FF4BA55001E12E3 /* Observable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A07711FF4BA55001E12E3 /* Observable+Extensions.swift */; };
+		C21A07741FF4E491001E12E3 /* Feedbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A07731FF4E491001E12E3 /* Feedbacks.swift */; };
 		C2EF11B01FF37E7C00D9670D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11AF1FF37E7C00D9670D /* AppDelegate.swift */; };
 		C2EF11B21FF37E7C00D9670D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11B11FF37E7C00D9670D /* ViewController.swift */; };
 		C2EF11B51FF37E7C00D9670D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2EF11B31FF37E7C00D9670D /* Main.storyboard */; };
@@ -17,7 +19,7 @@
 		C2EF11BD1FF37E7C00D9670D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2EF11BB1FF37E7C00D9670D /* LaunchScreen.storyboard */; };
 		C2EF11C81FF37E7C00D9670D /* THAddressBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11C71FF37E7C00D9670D /* THAddressBookTests.swift */; };
 		C2EF11D31FF37E7D00D9670D /* THAddressBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11D21FF37E7D00D9670D /* THAddressBookUITests.swift */; };
-		C2EF11E11FF385C700D9670D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11E01FF385C700D9670D /* User.swift */; };
+		C2EF11E11FF385C700D9670D /* THUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11E01FF385C700D9670D /* THUser.swift */; };
 		F020F42F9055B5E951972762 /* Pods_THAddressBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E980BE5D9C98EF697D1F44 /* Pods_THAddressBookTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		4813545803271831656F4CDA /* Pods-THAddressBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook.debug.xcconfig"; sourceTree = "<group>"; };
 		B607F57284A00C7C5DB5AB65 /* Pods-THAddressBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookTests/Pods-THAddressBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C1ECE310262A80874F88BCD0 /* Pods-THAddressBookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C21A07711FF4BA55001E12E3 /* Observable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extensions.swift"; sourceTree = "<group>"; };
+		C21A07731FF4E491001E12E3 /* Feedbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacks.swift; sourceTree = "<group>"; };
 		C2EF11AC1FF37E7C00D9670D /* THAddressBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = THAddressBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EF11AF1FF37E7C00D9670D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2EF11B11FF37E7C00D9670D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +64,7 @@
 		C2EF11CE1FF37E7D00D9670D /* THAddressBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = THAddressBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EF11D21FF37E7D00D9670D /* THAddressBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THAddressBookUITests.swift; sourceTree = "<group>"; };
 		C2EF11D41FF37E7D00D9670D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2EF11E01FF385C700D9670D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C2EF11E01FF385C700D9670D /* THUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THUser.swift; sourceTree = "<group>"; };
 		C426404ABDDF2428AD51731B /* Pods-THAddressBookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CA3AB38C678A7E3F325C7AE8 /* Pods_THAddressBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THAddressBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,7 +152,9 @@
 				C2EF11BB1FF37E7C00D9670D /* LaunchScreen.storyboard */,
 				C2EF11BE1FF37E7C00D9670D /* Info.plist */,
 				C2EF11B61FF37E7C00D9670D /* THAddressBook.xcdatamodeld */,
-				C2EF11E01FF385C700D9670D /* User.swift */,
+				C2EF11E01FF385C700D9670D /* THUser.swift */,
+				C21A07711FF4BA55001E12E3 /* Observable+Extensions.swift */,
+				C21A07731FF4E491001E12E3 /* Feedbacks.swift */,
 			);
 			path = THAddressBook;
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 		C2EF11A41FF37E7C00D9670D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TH;
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Tan.huang;
@@ -470,9 +477,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EF11E11FF385C700D9670D /* User.swift in Sources */,
+				C2EF11E11FF385C700D9670D /* THUser.swift in Sources */,
 				C2EF11B21FF37E7C00D9670D /* ViewController.swift in Sources */,
+				C21A07741FF4E491001E12E3 /* Feedbacks.swift in Sources */,
 				C2EF11B01FF37E7C00D9670D /* AppDelegate.swift in Sources */,
+				C21A07721FF4BA55001E12E3 /* Observable+Extensions.swift in Sources */,
 				C2EF11B81FF37E7C00D9670D /* THAddressBook.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
