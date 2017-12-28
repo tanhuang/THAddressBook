@@ -1,0 +1,795 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30F93B360536600F24063E14 /* Pods_THAddressBookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE8440627760D275A15C6C3 /* Pods_THAddressBookUITests.framework */; };
+		7D0F9D59211D1519F6F30435 /* Pods_THAddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3AB38C678A7E3F325C7AE8 /* Pods_THAddressBook.framework */; };
+		C2EF11B01FF37E7C00D9670D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11AF1FF37E7C00D9670D /* AppDelegate.swift */; };
+		C2EF11B21FF37E7C00D9670D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11B11FF37E7C00D9670D /* ViewController.swift */; };
+		C2EF11B51FF37E7C00D9670D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2EF11B31FF37E7C00D9670D /* Main.storyboard */; };
+		C2EF11B81FF37E7C00D9670D /* THAddressBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11B61FF37E7C00D9670D /* THAddressBook.xcdatamodeld */; };
+		C2EF11BA1FF37E7C00D9670D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2EF11B91FF37E7C00D9670D /* Assets.xcassets */; };
+		C2EF11BD1FF37E7C00D9670D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2EF11BB1FF37E7C00D9670D /* LaunchScreen.storyboard */; };
+		C2EF11C81FF37E7C00D9670D /* THAddressBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11C71FF37E7C00D9670D /* THAddressBookTests.swift */; };
+		C2EF11D31FF37E7D00D9670D /* THAddressBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11D21FF37E7D00D9670D /* THAddressBookUITests.swift */; };
+		C2EF11E11FF385C700D9670D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF11E01FF385C700D9670D /* User.swift */; };
+		F020F42F9055B5E951972762 /* Pods_THAddressBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E980BE5D9C98EF697D1F44 /* Pods_THAddressBookTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2EF11C41FF37E7C00D9670D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2EF11A41FF37E7C00D9670D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2EF11AB1FF37E7C00D9670D;
+			remoteInfo = THAddressBook;
+		};
+		C2EF11CF1FF37E7D00D9670D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2EF11A41FF37E7C00D9670D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2EF11AB1FF37E7C00D9670D;
+			remoteInfo = THAddressBook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03E980BE5D9C98EF697D1F44 /* Pods_THAddressBookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THAddressBookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DE8440627760D275A15C6C3 /* Pods_THAddressBookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THAddressBookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E1F0AC83961521728BCC754 /* Pods-THAddressBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookTests/Pods-THAddressBookTests.release.xcconfig"; sourceTree = "<group>"; };
+		3967A05D6903AF70A9217745 /* Pods-THAddressBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook.release.xcconfig"; sourceTree = "<group>"; };
+		4813545803271831656F4CDA /* Pods-THAddressBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook.debug.xcconfig"; sourceTree = "<group>"; };
+		B607F57284A00C7C5DB5AB65 /* Pods-THAddressBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookTests/Pods-THAddressBookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C1ECE310262A80874F88BCD0 /* Pods-THAddressBookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2EF11AC1FF37E7C00D9670D /* THAddressBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = THAddressBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EF11AF1FF37E7C00D9670D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2EF11B11FF37E7C00D9670D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C2EF11B41FF37E7C00D9670D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2EF11B71FF37E7C00D9670D /* THAddressBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = THAddressBook.xcdatamodel; sourceTree = "<group>"; };
+		C2EF11B91FF37E7C00D9670D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2EF11BC1FF37E7C00D9670D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2EF11BE1FF37E7C00D9670D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2EF11C31FF37E7C00D9670D /* THAddressBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = THAddressBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EF11C71FF37E7C00D9670D /* THAddressBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THAddressBookTests.swift; sourceTree = "<group>"; };
+		C2EF11C91FF37E7C00D9670D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2EF11CE1FF37E7D00D9670D /* THAddressBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = THAddressBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EF11D21FF37E7D00D9670D /* THAddressBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THAddressBookUITests.swift; sourceTree = "<group>"; };
+		C2EF11D41FF37E7D00D9670D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2EF11E01FF385C700D9670D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C426404ABDDF2428AD51731B /* Pods-THAddressBookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THAddressBookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA3AB38C678A7E3F325C7AE8 /* Pods_THAddressBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THAddressBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2EF11A91FF37E7C00D9670D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D0F9D59211D1519F6F30435 /* Pods_THAddressBook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11C01FF37E7C00D9670D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F020F42F9055B5E951972762 /* Pods_THAddressBookTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11CB1FF37E7D00D9670D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30F93B360536600F24063E14 /* Pods_THAddressBookUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F622252AF7272A0A7371685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA3AB38C678A7E3F325C7AE8 /* Pods_THAddressBook.framework */,
+				03E980BE5D9C98EF697D1F44 /* Pods_THAddressBookTests.framework */,
+				0DE8440627760D275A15C6C3 /* Pods_THAddressBookUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDC9B8C6F3D6024481C24C92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4813545803271831656F4CDA /* Pods-THAddressBook.debug.xcconfig */,
+				3967A05D6903AF70A9217745 /* Pods-THAddressBook.release.xcconfig */,
+				B607F57284A00C7C5DB5AB65 /* Pods-THAddressBookTests.debug.xcconfig */,
+				0E1F0AC83961521728BCC754 /* Pods-THAddressBookTests.release.xcconfig */,
+				C1ECE310262A80874F88BCD0 /* Pods-THAddressBookUITests.debug.xcconfig */,
+				C426404ABDDF2428AD51731B /* Pods-THAddressBookUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C2EF11A31FF37E7C00D9670D = {
+			isa = PBXGroup;
+			children = (
+				C2EF11AE1FF37E7C00D9670D /* THAddressBook */,
+				C2EF11C61FF37E7C00D9670D /* THAddressBookTests */,
+				C2EF11D11FF37E7D00D9670D /* THAddressBookUITests */,
+				C2EF11AD1FF37E7C00D9670D /* Products */,
+				BDC9B8C6F3D6024481C24C92 /* Pods */,
+				8F622252AF7272A0A7371685 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C2EF11AD1FF37E7C00D9670D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2EF11AC1FF37E7C00D9670D /* THAddressBook.app */,
+				C2EF11C31FF37E7C00D9670D /* THAddressBookTests.xctest */,
+				C2EF11CE1FF37E7D00D9670D /* THAddressBookUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2EF11AE1FF37E7C00D9670D /* THAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				C2EF11AF1FF37E7C00D9670D /* AppDelegate.swift */,
+				C2EF11B11FF37E7C00D9670D /* ViewController.swift */,
+				C2EF11B31FF37E7C00D9670D /* Main.storyboard */,
+				C2EF11B91FF37E7C00D9670D /* Assets.xcassets */,
+				C2EF11BB1FF37E7C00D9670D /* LaunchScreen.storyboard */,
+				C2EF11BE1FF37E7C00D9670D /* Info.plist */,
+				C2EF11B61FF37E7C00D9670D /* THAddressBook.xcdatamodeld */,
+				C2EF11E01FF385C700D9670D /* User.swift */,
+			);
+			path = THAddressBook;
+			sourceTree = "<group>";
+		};
+		C2EF11C61FF37E7C00D9670D /* THAddressBookTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2EF11C71FF37E7C00D9670D /* THAddressBookTests.swift */,
+				C2EF11C91FF37E7C00D9670D /* Info.plist */,
+			);
+			path = THAddressBookTests;
+			sourceTree = "<group>";
+		};
+		C2EF11D11FF37E7D00D9670D /* THAddressBookUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C2EF11D21FF37E7D00D9670D /* THAddressBookUITests.swift */,
+				C2EF11D41FF37E7D00D9670D /* Info.plist */,
+			);
+			path = THAddressBookUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2EF11AB1FF37E7C00D9670D /* THAddressBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2EF11D71FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBook" */;
+			buildPhases = (
+				A6F18BE15210BFF61EEF4644 /* [CP] Check Pods Manifest.lock */,
+				C2EF11A81FF37E7C00D9670D /* Sources */,
+				C2EF11A91FF37E7C00D9670D /* Frameworks */,
+				C2EF11AA1FF37E7C00D9670D /* Resources */,
+				86374E8C09BEF277372D4603 /* [CP] Embed Pods Frameworks */,
+				3A23CB392AB1BCE5F15D8BE7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = THAddressBook;
+			productName = THAddressBook;
+			productReference = C2EF11AC1FF37E7C00D9670D /* THAddressBook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2EF11C21FF37E7C00D9670D /* THAddressBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2EF11DA1FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBookTests" */;
+			buildPhases = (
+				019EB61A37D5BFB9B65EF515 /* [CP] Check Pods Manifest.lock */,
+				C2EF11BF1FF37E7C00D9670D /* Sources */,
+				C2EF11C01FF37E7C00D9670D /* Frameworks */,
+				C2EF11C11FF37E7C00D9670D /* Resources */,
+				CE86848C709B04233B55BEDB /* [CP] Embed Pods Frameworks */,
+				279D1CCDDE964162499C4A54 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2EF11C51FF37E7C00D9670D /* PBXTargetDependency */,
+			);
+			name = THAddressBookTests;
+			productName = THAddressBookTests;
+			productReference = C2EF11C31FF37E7C00D9670D /* THAddressBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2EF11CD1FF37E7D00D9670D /* THAddressBookUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2EF11DD1FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBookUITests" */;
+			buildPhases = (
+				A4A18EFEBA9FA2723B039D3F /* [CP] Check Pods Manifest.lock */,
+				C2EF11CA1FF37E7D00D9670D /* Sources */,
+				C2EF11CB1FF37E7D00D9670D /* Frameworks */,
+				C2EF11CC1FF37E7D00D9670D /* Resources */,
+				E9BDED012409107E20C638A9 /* [CP] Embed Pods Frameworks */,
+				01131D4CA399029A72125091 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2EF11D01FF37E7D00D9670D /* PBXTargetDependency */,
+			);
+			name = THAddressBookUITests;
+			productName = THAddressBookUITests;
+			productReference = C2EF11CE1FF37E7D00D9670D /* THAddressBookUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2EF11A41FF37E7C00D9670D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Tan.huang;
+				TargetAttributes = {
+					C2EF11AB1FF37E7C00D9670D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					C2EF11C21FF37E7C00D9670D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C2EF11AB1FF37E7C00D9670D;
+					};
+					C2EF11CD1FF37E7D00D9670D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C2EF11AB1FF37E7C00D9670D;
+					};
+				};
+			};
+			buildConfigurationList = C2EF11A71FF37E7C00D9670D /* Build configuration list for PBXProject "THAddressBook" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2EF11A31FF37E7C00D9670D;
+			productRefGroup = C2EF11AD1FF37E7C00D9670D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2EF11AB1FF37E7C00D9670D /* THAddressBook */,
+				C2EF11C21FF37E7C00D9670D /* THAddressBookTests */,
+				C2EF11CD1FF37E7D00D9670D /* THAddressBookUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2EF11AA1FF37E7C00D9670D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2EF11BD1FF37E7C00D9670D /* LaunchScreen.storyboard in Resources */,
+				C2EF11BA1FF37E7C00D9670D /* Assets.xcassets in Resources */,
+				C2EF11B51FF37E7C00D9670D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11C11FF37E7C00D9670D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11CC1FF37E7D00D9670D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01131D4CA399029A72125091 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		019EB61A37D5BFB9B65EF515 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-THAddressBookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		279D1CCDDE964162499C4A54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBookTests/Pods-THAddressBookTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A23CB392AB1BCE5F15D8BE7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86374E8C09BEF277372D4603 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBook/Pods-THAddressBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4A18EFEBA9FA2723B039D3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-THAddressBookUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6F18BE15210BFF61EEF4644 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-THAddressBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE86848C709B04233B55BEDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBookTests/Pods-THAddressBookTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9BDED012409107E20C638A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-THAddressBookUITests/Pods-THAddressBookUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2EF11A81FF37E7C00D9670D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2EF11E11FF385C700D9670D /* User.swift in Sources */,
+				C2EF11B21FF37E7C00D9670D /* ViewController.swift in Sources */,
+				C2EF11B01FF37E7C00D9670D /* AppDelegate.swift in Sources */,
+				C2EF11B81FF37E7C00D9670D /* THAddressBook.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11BF1FF37E7C00D9670D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2EF11C81FF37E7C00D9670D /* THAddressBookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2EF11CA1FF37E7D00D9670D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2EF11D31FF37E7D00D9670D /* THAddressBookUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2EF11C51FF37E7C00D9670D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2EF11AB1FF37E7C00D9670D /* THAddressBook */;
+			targetProxy = C2EF11C41FF37E7C00D9670D /* PBXContainerItemProxy */;
+		};
+		C2EF11D01FF37E7D00D9670D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2EF11AB1FF37E7C00D9670D /* THAddressBook */;
+			targetProxy = C2EF11CF1FF37E7D00D9670D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C2EF11B31FF37E7C00D9670D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2EF11B41FF37E7C00D9670D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C2EF11BB1FF37E7C00D9670D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2EF11BC1FF37E7C00D9670D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C2EF11D51FF37E7D00D9670D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C2EF11D61FF37E7D00D9670D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2EF11D81FF37E7D00D9670D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4813545803271831656F4CDA /* Pods-THAddressBook.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2EF11D91FF37E7D00D9670D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3967A05D6903AF70A9217745 /* Pods-THAddressBook.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C2EF11DB1FF37E7D00D9670D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B607F57284A00C7C5DB5AB65 /* Pods-THAddressBookTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/THAddressBook.app/THAddressBook";
+			};
+			name = Debug;
+		};
+		C2EF11DC1FF37E7D00D9670D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1F0AC83961521728BCC754 /* Pods-THAddressBookTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/THAddressBook.app/THAddressBook";
+			};
+			name = Release;
+		};
+		C2EF11DE1FF37E7D00D9670D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1ECE310262A80874F88BCD0 /* Pods-THAddressBookUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = THAddressBook;
+			};
+			name = Debug;
+		};
+		C2EF11DF1FF37E7D00D9670D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C426404ABDDF2428AD51731B /* Pods-THAddressBookUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3X7RRL7Z68;
+				INFOPLIST_FILE = THAddressBookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanhuag.THAddressBookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = THAddressBook;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2EF11A71FF37E7C00D9670D /* Build configuration list for PBXProject "THAddressBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2EF11D51FF37E7D00D9670D /* Debug */,
+				C2EF11D61FF37E7D00D9670D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2EF11D71FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2EF11D81FF37E7D00D9670D /* Debug */,
+				C2EF11D91FF37E7D00D9670D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2EF11DA1FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2EF11DB1FF37E7D00D9670D /* Debug */,
+				C2EF11DC1FF37E7D00D9670D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2EF11DD1FF37E7D00D9670D /* Build configuration list for PBXNativeTarget "THAddressBookUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2EF11DE1FF37E7D00D9670D /* Debug */,
+				C2EF11DF1FF37E7D00D9670D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C2EF11B61FF37E7C00D9670D /* THAddressBook.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C2EF11B71FF37E7C00D9670D /* THAddressBook.xcdatamodel */,
+			);
+			currentVersion = C2EF11B71FF37E7C00D9670D /* THAddressBook.xcdatamodel */;
+			path = THAddressBook.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C2EF11A41FF37E7C00D9670D /* Project object */;
+}
