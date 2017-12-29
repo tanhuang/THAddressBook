@@ -135,9 +135,92 @@ public func react<State, Query, Event>(
             return effects(effect).asObservable()
         })(observableSchedulerContext).asSignal(onErrorSignalWith: SharedSequence<SignalSharingStrategy, Event>.empty())
     }
-
 }
 
+
+public func react<State, Query, Event> (
+    query: @escaping (State) -> Query?,
+    effects: @escaping (Query) -> Observable<Event>
+    ) -> (ObservableSchedulerContext<State>) -> Observable<Event> {
+    return { state in
+        return state.map(query)
+            .distinctUntilChanged({ $0 != nil })
+            .flatMapLatest({ (control: Query?) -> Observable<Event> in
+                guard let control = control else {
+                    return Observable<Event>.empty()
+                }
+
+                return effects(control).enqueue(state.scheduler)
+        })
+    }
+}
+
+public func react<State, Query, Event>(
+    query: @escaping (State) -> Query?,
+    effects: @escaping (Query) -> Signal<Event>
+    ) -> (Driver<State>) -> Signal<Event> {
+    return { state in
+        let observableSchedulerContext = ObservableSchedulerContext<State>(
+            source: state.asObservable(),
+            scheduler: Signal<Event>.SharingStrategy.scheduler.async
+        )
+        return react(query: query, effects:
+            { effects($0).asObservable() })(observableSchedulerContext)
+            .asSignal(onErrorSignalWith: .empty())
+    }
+}
+
+public func react<State, Query, Event>(
+    query: @escaping (State) -> Set<Query>,
+    effects: @escaping (Query) -> Observable<Event>
+    ) -> (ObservableSchedulerContext<State>) -> Observable<Event> {
+    return { state in
+        let query = state.map(query).share(replay: 1)
+        let newQueries = Observable.zip(query, query.startWith(Set()))
+            { $0.subtracting($1) }
+        let asyncScheduler = state.scheduler.async
+
+        return newQueries.flatMap({ controls in
+            return Observable<Event>.merge(controls.map({ control -> Observable<Event> in
+                return effects(control)
+                    .enqueue(state.scheduler)
+                    .takeUntilWithCompletedAsync(query.filter { !$0.contains(control) }, scheduler: asyncScheduler)
+            }))
+        })
+    }
+}
+
+
+extension ObservableType {
+    // This is important to avoid reentrancy issues. Completed event is only used for cleanup
+    //这对避免重入问题非常重要。 已完成的事件仅用于清理
+    fileprivate func takeUntilWithCompletedAsync<O>(_ other: Observable<O>, scheduler: ImmediateSchedulerType) -> Observable<E> {
+        // this little piggy will delay completed event
+        //这个小猪会延迟完成的事件
+        let completeAsSoonPossible = Observable<E>.empty().observeOn(scheduler)
+        return other.take(1).map {_ in completeAsSoonPossible}
+            // this little piggy will ensure self is being run first
+            //这个小猪会保证自己先跑
+            .startWith(self.asObservable())
+            // this little piggy will ensure that new events are being blocked immediatelly
+            //这个小猪会确保新的事件被立即封锁
+            .switchLatest()
+    }
+}
+
+public func react<State, Query, Event>(
+    query: @escaping (State) -> Set<Query>,
+    effects: @escaping (Query) -> Signal<Event>
+    ) -> (Driver<State>) -> Signal<Event> {
+    return { (state: Driver<State>) -> Signal<Event> in
+        let observalbeSchedulerContext = ObservableSchedulerContext(
+            source: state.asObservable(),
+            scheduler: Signal<Event>.SharingStrategy.scheduler.async
+        )
+        return react(query: query, effects:{ effects($0).asObservable() }) (observalbeSchedulerContext)
+            .asSignal(onErrorSignalWith: .empty())
+    }
+}
 
 extension Observable {
     fileprivate func enqueue(_ scheduler: ImmediateSchedulerType) -> Observable<Element> {
@@ -152,6 +235,109 @@ extension Observable {
             .subscribeOn(scheduler.async)
     }
 }
+
+/**
+ Contains subscriptions and events.
+ - `subscriptions` map a system state to UI presentation.
+ - `events` map events from UI to events of a given system.
+ 包含订阅和事件。
+ - “订阅”将系统状态映射到UI呈现。
+ - 事件从UI映射到给定系统的事件。
+ */
+public class Bindings<Event>: Disposable {
+    fileprivate let subscriptions: [Disposable]
+    fileprivate let events: [Observable<Event>]
+
+    /**
+     - parameters:
+     - subscriptions: mappings of a system state to UI presentation. 系统状态到UI展示的映射。
+     - events: mappings of events from UI to events of a given system 从用户界面到给定系统事件的映射
+     */
+    init(subscriptions: [Disposable], events: [Observable<Event>]) {
+        self.subscriptions = subscriptions
+        self.events = events
+    }
+    /**
+     - parameters:
+     - subscriptions: mappings of a system state to UI presentation. 系统状态到UI展示的映射。
+     - events: mappings of events from UI to events of a given system 从用户界面到给定系统事件的映射
+     */
+    init(subscriptions: [Disposable], events: [Signal<Event>]) {
+        self.subscriptions = subscriptions
+        self.events = events.map { $0.asObservable()}
+    }
+
+    public func dispose() {
+        for subscription in subscriptions {
+            subscription.dispose()
+        }
+    }
+}
+
+/**
+ Bi-directional binding of a system State to external state machine and events from it.
+ 将系统状态双向绑定到外部状态机和来自它的事件。
+ */
+
+public func bind<State, Event> (_ bingings: @escaping (ObservableSchedulerContext<State>) -> (Bindings<Event>)) -> (ObservableSchedulerContext<State>) -> Observable<Event> {
+    return { (state: ObservableSchedulerContext<State>) -> Observable<Event> in
+        return Observable<Event>.using({ () -> Bindings<Event> in
+            return bingings(state)
+        }, observableFactory: { (bindings: Bindings<Event>) -> Observable<Event> in
+            return Observable<Event>.merge(bindings.events)
+                .enqueue(state.scheduler)
+        })
+    }
+}
+
+/**
+ Bi-directional binding of a system State to external state machine and events from it.
+ Strongify owner.
+ 将系统状态双向绑定到外部状态机和来自它的事件。
+ 强化所有者。
+ */
+public func bind<State, Event, WeakOwner>(_ ownerL WeakOwner, _ bindings: @escaping (WeakOwner, ObservableSchedulerContext<State>) -> (Bindings<Event>)) -> (ObservableSchedulerContext<State> -> Observable<Event>) where WeakOwner: AnyObject {
+    return bind(bind)
+}
+
+
+
+
+/**
+ Bi-directional binding of a system State to external state machine and events from it.
+ Strongify owner.
+ 将系统状态双向绑定到外部状态机和来自它的事件。
+ 强化所有者。
+ */
+public func bind<State, Event, WeakOwner>(_ owner: WeakOwner, _ bindings: @escaping (WeakOwner, Driver<State>) -> (Bindings<Event>)) -> (Driver<State>) -> Signal<Event> where WeakOwner: AnyObject {
+    return bindingsStrongify(owner, bindings)
+}
+
+public func bindingsStrongify<Event, O, WeakOwner>(_ owner: WeakOwner, _ bindings: @escaping (WeakOwner, O) -> (Bindings<Event>)) -> (O) -> (Bindings<Event>) where WeakOwner: AnyObject {
+    return { [weak owner] state -> Bindings<Event> in
+        guard let strongOwner = owner else {
+            return Bindings(subscriptions: [], events: [Observable<Event>]())
+        }
+        return bindings(strongOwner, state)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
