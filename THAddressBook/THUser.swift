@@ -17,12 +17,10 @@ Swift标准库协议
 struct User: Equatable, CustomDebugStringConvertible {
     var name: String
     var iphone: String
-    var image: String
 
-    init(name: String, iphone: String, image: String) {
+    init(name: String, iphone: String) {
         self.name = name
         self.iphone = iphone
-        self.image = image
     }
 }
 
@@ -34,8 +32,7 @@ extension User {
 
 func ==(lhs: User, rhs: User) -> Bool {
     return lhs.name == rhs.name &&
-        lhs.iphone == rhs.iphone &&
-        lhs.image == rhs.image
+        lhs.iphone == rhs.iphone
 }
 
 

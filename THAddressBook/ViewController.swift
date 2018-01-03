@@ -29,26 +29,27 @@ import RxDataSources
  */
 
 struct TableViewEditingCommandsViewModel {
-    let favoriteUsers: [User]
+
     let users: [User]
 
     static func executeCommand(state: TableViewEditingCommandsViewModel, command: TableViewEditingCommand) -> TableViewEditingCommandsViewModel {
         switch command {
         case let .setUsers(users: users):
-            return TableViewEditingCommandsViewModel(favoriteUsers: state.favoriteUsers, users: users)
-        case let .setFavoriteUsers(favoriteUsers: favoriteUsers):
-            return TableViewEditingCommandsViewModel(favoriteUsers: favoriteUsers, users: state.users)
+            return TableViewEditingCommandsViewModel(users: users)
         case let .deleteUser(indexPath: indexpath):
-            var all = [state.favoriteUsers, state.users]
+            var all = [state.users]
             all[indexpath.section].remove(at: indexpath.row)
-            return TableViewEditingCommandsViewModel(favoriteUsers: all[0], users: all[1])
+            return TableViewEditingCommandsViewModel(users: all[0])
         case let .moveUser(from: from, to: to):
-            var all = [state.favoriteUsers, state.users]
+            var all = [state.users]
             let user = all[from.section][from.row]
             all[from.section].remove(at: from.row)
             all[to.section].insert(user, at: to.row)
-
-            return TableViewEditingCommandsViewModel(favoriteUsers: all[0], users: all[1])
+            return TableViewEditingCommandsViewModel(users: all[0])
+        case let .addUser(user: user):
+            var all = [state.users]
+            all[0].insert(user, at: 0)
+            return TableViewEditingCommandsViewModel(users: all[0])
         }
     }
 }
@@ -56,49 +57,97 @@ struct TableViewEditingCommandsViewModel {
 
 enum TableViewEditingCommand {
     case setUsers(users: [User])
-    case setFavoriteUsers(favoriteUsers: [User])
     case deleteUser(indexPath: IndexPath)
     case moveUser(from: IndexPath, to: IndexPath)
-//    case addUser(user: [User])
+    case addUser(user: User)
 }
 
 
 class ViewController: UIViewController, UITableViewDelegate {
 
-    let dataSource = ViewController.configureDataSource
+    let dataSource = ViewController.configureDataSource()
 
-    lazy var tableView: UITableView = {
-        let tableview = UITableView.init(frame: view.bounds)
-        tableview.backgroundColor = UIColor.lightText
-        tableview.rowHeight = 44
-        tableview.estimatedRowHeight = 0
-        tableview.estimatedSectionFooterHeight = 0
-        tableview.estimatedSectionHeaderHeight = 0
-        view.addSubview(tableview)
-        return tableview
-    }()
+    var disposeBag = DisposeBag()
+
+    var tableView: UITableView!
+
+    let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+
+#if TRACE_RESOURCES
+    private let startResourceCount = RxSwift.Resources.total
+#endif
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "通讯录"
 
+        #if TRACE_RESOURCES
+            print("Number of start resources = \(Resources.total)")
+        #endif
+
+
+
+        configTableView()
+
         typealias Feedback = (ObservableSchedulerContext<TableViewEditingCommandsViewModel>) -> Observable<TableViewEditingCommand>
 
         navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = self.addButtonItem
 
-        let superMan = User.init(name: "东方不败", iphone: "1888888888", image: "东")
-        let watMan = User.init(name: "西方不败", iphone: "1888888888", image: "西")
+        let superMan = User(name: "东方不败", iphone: "1888888888")
+        let watMan = User(name: "西方不败", iphone: "1888888888")
 
-        let initialLoadCommand = Observable.just(TableViewEditingCommand.setFavoriteUsers(favoriteUsers: [superMan, watMan]))
+
+        let initialLoadCommand = Observable.just(
+                TableViewEditingCommand.setUsers(users: [superMan, watMan])
+            )
             .observeOn(MainScheduler.instance)
 
-//        let uiFeedback: Feedback = bind(self) {
-//            
-//
-//
-//        }
+        let uiFeedback: Feedback = bind(self) { (this, state) -> (Bindings<TableViewEditingCommand>) in
+            let subscriptions = [
+                state.map { [SectionModel(model: "Users", items: $0.users)] }
+                    .bind(to: this.tableView.rx.items(dataSource: this.dataSource)),
+                this.tableView.rx.itemSelected
+                    .withLatestFrom(state) { i, latestState in
+                        this.tableView.deselectRow(at: i, animated: true)
+                        let all = [latestState.users]
+                        return all[i.section][i.row]
+                    }
+                    .subscribe(onNext: { (user) in
+                        self.showDetailsForUser(user: user)
+                    }),
 
+            ]
+
+            let events: [Observable<TableViewEditingCommand>] = [
+                this.tableView.rx.itemDeleted.map(
+                    TableViewEditingCommand.deleteUser
+                ),
+                this.tableView.rx.itemMoved.map({ val in
+                    return TableViewEditingCommand.moveUser(from: val.0, to: val.1)
+                }),
+
+                this.addButtonItem.rx.tap.map({ _ in
+                    return TableViewEditingCommand.addUser(user: User(name: "不败", iphone: "1888888888"))
+                })
+            ]
+
+            return Bindings(subscriptions: subscriptions, events: events)
+        }
+
+        let initialLoadFeedback: Feedback = {_ in initialLoadCommand }
+
+        Observable.system(
+            initialState: TableViewEditingCommandsViewModel(users: []),
+            reduce: TableViewEditingCommandsViewModel.executeCommand,
+            scheduler: MainScheduler.instance,
+            scheduledFeedback: [uiFeedback, initialLoadFeedback]
+        )
+            .subscribe()
+            .disposed(by: disposeBag)
+
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
     }
 
@@ -107,20 +156,41 @@ class ViewController: UIViewController, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.isEditing = editing
+    }
+
+    func showDetailsForUser(user: User) {
+        debugPrint("\(user)")
+    }
+
+    func configTableView() {
+        tableView = UITableView.init(frame: view.bounds)
+        tableView.backgroundColor = UIColor.lightText
+        tableView.rowHeight = 44
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        view.addSubview(tableView)
+    }
 
     static func configureDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, User>> {
+
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>(
-            configureCell: { (_, tableview, indexPath, user: User)  in
-                let cell = tableview.dequeueReusableCell(withIdentifier: "THAddressBookCell")
+            configureCell: { (dataSource, tableview, indexPath, user: User) -> UITableViewCell in
+                var cell = tableview.dequeueReusableCell(withIdentifier: "THAddressBookCell")
+                if cell == nil {
+                    cell = UITableViewCell.init(style: UITableViewCellStyle.value1, reuseIdentifier: "THAddressBookCell")
+                }
                 cell?.textLabel?.text = user.name
                 cell?.detailTextLabel?.text = user.iphone
-                cell?.imageView?.image = UIImage.init(named: user.image)
                 return cell!
             },
-            canEditRowAtIndexPath: { (ds, idnexPath) in
+            canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
                 return true
             },
-            canMoveRowAtIndexPath: {_,_ in
+            canMoveRowAtIndexPath: { (dataSource, indexPath) -> Bool in
                 return true
             }
         )

@@ -253,7 +253,7 @@ public class Bindings<Event>: Disposable {
      - subscriptions: mappings of a system state to UI presentation. 系统状态到UI展示的映射。
      - events: mappings of events from UI to events of a given system 从用户界面到给定系统事件的映射
      */
-    init(subscriptions: [Disposable], events: [Observable<Event>]) {
+    public init(subscriptions: [Disposable], events: [Observable<Event>]) {
         self.subscriptions = subscriptions
         self.events = events
     }
@@ -262,7 +262,7 @@ public class Bindings<Event>: Disposable {
      - subscriptions: mappings of a system state to UI presentation. 系统状态到UI展示的映射。
      - events: mappings of events from UI to events of a given system 从用户界面到给定系统事件的映射
      */
-    init(subscriptions: [Disposable], events: [Signal<Event>]) {
+    public init(subscriptions: [Disposable], events: [Signal<Event>]) {
         self.subscriptions = subscriptions
         self.events = events.map { $0.asObservable()}
     }
@@ -296,10 +296,23 @@ public func bind<State, Event> (_ bingings: @escaping (ObservableSchedulerContex
  将系统状态双向绑定到外部状态机和来自它的事件。
  强化所有者。
  */
-public func bind<State, Event, WeakOwner>(_ ownerL WeakOwner, _ bindings: @escaping (WeakOwner, ObservableSchedulerContext<State>) -> (Bindings<Event>)) -> (ObservableSchedulerContext<State> -> Observable<Event>) where WeakOwner: AnyObject {
-    return bind(bind)
+public func bind<State, Event, WeakOwner>(_ owner: WeakOwner, _ bindings: @escaping (WeakOwner, ObservableSchedulerContext<State>) -> (Bindings<Event>)) ->
+    (ObservableSchedulerContext<State>) -> Observable<Event> where WeakOwner: AnyObject {
+    return bind(bindingsStrongify(owner, bindings))
 }
 
+
+public func bind<State, Event>(_ bindings: @escaping (Driver<State>) ->(Bindings<Event>)) -> (Driver<State>) -> Signal<Event> {
+    return { (state: Driver<State>) -> Signal<Event> in
+        return Observable<Event>.using({ () -> Bindings<Event> in
+            return bindings(state)
+        }, observableFactory: { (bindings: Bindings<Event>) -> Observable<Event> in
+            return Observable<Event>.merge(bindings.events)
+        })
+            .enqueue(Signal<Event>.SharingStrategy.scheduler)
+            .asSignal(onErrorSignalWith: .empty())
+    }
+}
 
 
 
@@ -310,7 +323,7 @@ public func bind<State, Event, WeakOwner>(_ ownerL WeakOwner, _ bindings: @escap
  强化所有者。
  */
 public func bind<State, Event, WeakOwner>(_ owner: WeakOwner, _ bindings: @escaping (WeakOwner, Driver<State>) -> (Bindings<Event>)) -> (Driver<State>) -> Signal<Event> where WeakOwner: AnyObject {
-    return bindingsStrongify(owner, bindings)
+    return bind(bindingsStrongify(owner, bindings))
 }
 
 public func bindingsStrongify<Event, O, WeakOwner>(_ owner: WeakOwner, _ bindings: @escaping (WeakOwner, O) -> (Bindings<Event>)) -> (O) -> (Bindings<Event>) where WeakOwner: AnyObject {
